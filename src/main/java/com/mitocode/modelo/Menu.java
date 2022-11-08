@@ -1,9 +1,7 @@
 package com.mitocode.modelo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "menu")
@@ -20,6 +18,12 @@ public class Menu {
 
     @Column(name = "url", nullable = false, length = 50)
     private String url;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "menu_rol",
+            joinColumns = @JoinColumn(name = "id_menu", referencedColumnName = "idMenu"),
+            inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "idRol"))
+    private List<Rol> roles;
 
     public Integer getIdMenu() {
         return idMenu;
@@ -51,5 +55,13 @@ public class Menu {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
     }
 }

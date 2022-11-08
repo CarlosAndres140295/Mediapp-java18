@@ -7,12 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface IPacienteServicio {
+public interface IPacienteServicio extends ICRUD<Paciente, Integer>{
 
-    Paciente registrar(Paciente paciente) throws Exception;
-    Paciente modificar(Paciente paciente) throws Exception;
-    List<Paciente> listar() throws Exception;
-    Paciente listarPorId(Integer id) throws Exception;
-    void eliminar(Integer id) throws Exception;
 
 }
